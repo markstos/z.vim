@@ -7,8 +7,10 @@ function! ZSortByFrequency(a, b)
   return split(a:b, '|')[1] - split(a:a, '|')[1]
 endfunction
 
+
 function! Z(keyword, command)
-  let list = readfile(expand('~/.z'))
+  let z_data = expand('~/.local/share/z/data')
+  let list = readfile(z_data)
   call filter(list, 'v:val =~ "'.a:keyword.'"')
   if len(list) <= 0
     return 1
